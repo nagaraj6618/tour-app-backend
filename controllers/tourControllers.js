@@ -1,5 +1,6 @@
 import Tour from '../models/Tour.js'
-
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 export const createTour = async (req, res) => {
   const newTour = new Tour(req.body)
   try {
@@ -170,4 +171,21 @@ export const getTourCount = async (req, res) => {
   catch (err) {
     res.status(500).json({ success: false, message: 'failed to fetch' })
   }
+}
+
+export const getImageByName = (req, res) => {
+
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = dirname(__filename);
+  const fileName = req.params.fileName
+  // console.log(fileName)
+  // console.log(__dirname);
+  const pareDirectory = (__dirname).split('\controllers')[0]
+
+  const filePath = pareDirectory + "tour-images/"  + fileName
+  console.log(filePath)
+  res.status(200).sendFile(filePath)
+
+
+
 }

@@ -154,7 +154,7 @@ export const register = async (req, res) => {
     const email = req.body.email
     const resp = await fetch(`https://emailvalidation.abstractapi.com/v1/?api_key=fa0cc9d0984042088d00ae9e89507a27&email=${email}`)
     const result = await resp.json()
-    console.log(result.deliverability)
+    // console.log(result.deliverability)
     // if (await result.deliverability == 'DELIVERABLE') {
       try {
 
