@@ -134,19 +134,19 @@ import User from '../models/User.js'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 function passwordEncryption(password) {
-  let p = password
-  let c = []
-  let cl = []
-  let k = 4
-  let l = p.length
-  let i;
-  for (i = 0; i < l; i++) {
-    c[i] = p.charCodeAt(i) + k
-    cl[i] = String.fromCharCode(c[i])
-  }
-  let a = cl.toString()
-  let x = a.toString().replaceAll(",", "")
-  return x
+  // let p = password
+  // let c = []
+  // let cl = []
+  // let k = 4
+  // let l = p.length
+  // let i;
+  // for (i = 0; i < l; i++) {
+  //   c[i] = p.charCodeAt(i) + k
+  //   cl[i] = String.fromCharCode(c[i])
+  // }
+  // let a = cl.toString()
+  // let x = a.toString().replaceAll(",", "")
+  return password
 }
 export const register = async (req, res) => {
 

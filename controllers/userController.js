@@ -11,6 +11,7 @@ export const createUser = async (req, res) => {
         message: "Successfully Created",
         data: savedUser,
       })
+      .cookie(newUser)
 
   }
   catch (err) {
@@ -80,6 +81,7 @@ export const getSingleUser = async (req, res) => {
         message: "Successfully fetched single data",
         data: user,
       })
+      .cookie(user)
   }
   catch (err) {
     res.status(500)

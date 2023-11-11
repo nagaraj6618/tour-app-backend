@@ -9,6 +9,7 @@ export const createReview = async (req, res) => {
     await Tour.findByIdAndUpdate(tourId, {
       $push: { reviews: savedReview._id }
     })
+
     res.status(200).json({ succes: true, message: "Review submitted", data: savedReview })
   }
   catch (err) {

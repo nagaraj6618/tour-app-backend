@@ -1,8 +1,29 @@
 import Tour from '../models/Tour.js'
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+
+export const uploadTourImage = async (req, res) => {
+  try {
+    res
+      .status(200)
+      .json({
+        success: true,
+        message: "Successfully Created",
+      })
+  }
+  catch (err) {
+    res.status(500)
+      .json({
+        succes: false, message: "failed to create. try again"
+      })
+  }
+}
+
 export const createTour = async (req, res) => {
+
   const newTour = new Tour(req.body)
+
+
   try {
     const savedTour = await newTour.save()
     res
@@ -10,7 +31,7 @@ export const createTour = async (req, res) => {
       .json({
         success: true,
         message: "Successfully Created",
-        data: savedTour,
+
       })
 
   }
@@ -71,6 +92,7 @@ export const deleteTour = async (req, res) => {
 export const getSingleTour = async (req, res) => {
 
   const id = req.params.id
+
 
   try {
     const tour = await Tour.findById(id).populate('reviews');
@@ -178,12 +200,8 @@ export const getImageByName = (req, res) => {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = dirname(__filename);
   const fileName = req.params.fileName
-  // console.log(fileName)
-  // console.log(__dirname);
   const pareDirectory = (__dirname).split('\controllers')[0]
-
-  const filePath = pareDirectory + "tour-images/"  + fileName
-  console.log(filePath)
+  const filePath = pareDirectory + "tour-images/" + fileName
   res.status(200).sendFile(filePath)
 
 
