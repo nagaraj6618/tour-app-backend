@@ -20,10 +20,7 @@ export const uploadTourImage = async (req, res) => {
 }
 
 export const createTour = async (req, res) => {
-
   const newTour = new Tour(req.body)
-
-
   try {
     const savedTour = await newTour.save()
     res
@@ -114,7 +111,7 @@ export const getSingleTour = async (req, res) => {
 
 export const getAllTour = async (req, res) => {
   const page = parseInt(req.query.page)
-  console.log(page);
+
   try {
     const tours = await Tour.find({}).populate('reviews').skip(page * 8).limit(8);
     res

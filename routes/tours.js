@@ -4,8 +4,8 @@ import { verifyAdmin } from "../utils/verifyToken.js";
 import upload from '../middleware/fileUpload.js'
 const router = express.Router()
 
-router.post('/upload',createTour)
-router.route('/upload/image').post(upload.single('file'), uploadTourImage)
+router.post('/',verifyAdmin,createTour)
+router.route('/upload/image').post(verifyAdmin,upload.single('file'), uploadTourImage)
 router.put('/:id', verifyAdmin, updateTour)
 router.delete('/:id', verifyAdmin, deleteTour)
 router.get('/:id', getSingleTour)
