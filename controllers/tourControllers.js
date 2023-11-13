@@ -68,7 +68,6 @@ export const updateTour = async (req, res) => {
 };
 export const deleteTour = async (req, res) => {
   const id = req.params.id
-
   try {
     await Tour.findByIdAndDelete(id);
     res
@@ -193,14 +192,10 @@ export const getTourCount = async (req, res) => {
 }
 
 export const getImageByName = (req, res) => {
-
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = dirname(__filename);
   const fileName = req.params.fileName
   const pareDirectory = (__dirname).split('\controllers')[0]
   const filePath = pareDirectory + "tour-images/" + fileName
   res.status(200).sendFile(filePath)
-
-
-
 }
