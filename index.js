@@ -20,6 +20,9 @@ const corsOptions = {
 app.get('/', (req, res) => {
   res.send("Working");
 })
+app.get('/api/v1/tour', (req, res) => {
+  res.json({message:"Working"});
+})
 mongoose.set("strictQuery", false)
 const connect = async () => {
   try {
