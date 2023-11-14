@@ -20,6 +20,8 @@ export const uploadTourImage = async (req, res) => {
 }
 
 export const createTour = async (req, res) => {
+  req.body.featured= req.body.featured ==='true'?true:false
+  console.log(req.body)
   const newTour = new Tour(req.body)
   try {
     const savedTour = await newTour.save()
